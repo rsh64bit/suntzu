@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ravi Kumar Sharma – Staff Firmware & Device Driver Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#f4f6f9;--panel:#ffffff;--line:#d5dce5;--text:#1b2430;--muted:#566474;
+  --green:#0a7f5a;--blue:#0b57d0;--amber:#9a6700;--glow:rgba(10,127,90,.10);
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0a0e14;--panel:#111823;--line:#243040;--text:#e6edf3;--muted:#8b98a9;--green:#3ddc97;--blue:#79b0ff;--amber:#f5c26b;--glow:rgba(61,220,151,.10)}
+}
+:root[data-theme="dark"]{--bg:#0a0e14;--panel:#111823;--line:#243040;--text:#e6edf3;--muted:#8b98a9;--green:#3ddc97;--blue:#79b0ff;--amber:#f5c26b;--glow:rgba(61,220,151,.10)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{display:flex;flex-direction:column;background:var(--bg);color:var(--text);font-family:var(--sans);overflow:hidden;
+  background-image:radial-gradient(circle at 85% 0%,var(--glow),transparent 45%)}
+.deck{position:relative;flex:1;min-height:0}
+.slide{position:absolute;inset:0;padding:clamp(16px,4vw,52px);overflow-y:auto;opacity:0;visibility:hidden;transform:translateX(28px);
+  transition:opacity .35s,transform .35s,visibility .35s;display:flex;flex-direction:column;gap:14px}
+.slide.on{opacity:1;visibility:visible;transform:none}
+@media (prefers-reduced-motion:reduce){.slide{transition:none}}
+.tag{font-family:var(--mono);font-size:12px;color:var(--green);letter-spacing:.04em}
+h1{font-size:clamp(30px,6vw,60px);line-height:1.05;margin:0;font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(22px,3.6vw,36px);margin:0;font-weight:800;letter-spacing:-.01em}
+h2::before{content:"🐧 ";font-size:.85em}
+.sub{color:var(--muted);font-size:clamp(14px,2vw,19px);margin:0}
+.mono{font-family:var(--mono)}
+.g{color:var(--green)}.b{color:var(--blue)}.a{color:var(--amber)}
+.term{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.term .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.dot{width:10px;height:10px;border-radius:50%;background:#ff5f57}.dot:nth-child(2){background:#febc2e}.dot:nth-child(3){background:#28c840}
+.term .body{padding:clamp(12px,2.4vw,22px);font-family:var(--mono);font-size:clamp(12px,1.7vw,15px);line-height:1.75}
+.cmd::before{content:"$ ";color:var(--green)}
+.cur{display:inline-block;width:.6em;height:1.1em;background:var(--green);vertical-align:text-bottom;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+.big{font-family:var(--mono);font-weight:600;font-size:clamp(26px,4vw,40px);color:var(--green);line-height:1}
+.card p{margin:8px 0 0;color:var(--muted);font-size:14px}
+ul.l{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+ul.l li{position:relative;padding-left:28px;font-size:clamp(14px,1.9vw,18px);line-height:1.5}
+ul.l li::before{content:"🐧";position:absolute;left:0;top:0;font-size:.9em}
+.k{font-family:var(--mono);font-size:.82em;color:var(--blue);background:var(--glow);padding:1px 6px;border-radius:5px}
+.row{display:grid;grid-template-columns:110px 1fr;gap:4px 16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.yr{font-family:var(--mono);font-size:13px;color:var(--amber)}
+.row b{display:block;font-size:16px}.row span{color:var(--muted);font-size:14px;line-height:1.5}
+@media (max-width:520px){.row{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--text);background:var(--bg)}
+.sk{margin:0 0 10px}.sk .tag{display:block;margin-bottom:6px}
+nav{display:flex;align-items:center;gap:10px;padding:10px clamp(14px,3vw,28px);border-top:1px solid var(--line);background:var(--panel);font-family:var(--mono);font-size:12px;color:var(--muted)}
+nav .brand{margin-right:auto;white-space:nowrap}
+nav button{font:inherit;color:var(--text);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;min-height:36px}
+nav button:hover{border-color:var(--green);color:var(--green)}
+.prog{height:3px;background:var(--line)}.prog i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+a{color:var(--blue)}
+</style>
+</head>
+<body>
+<div class="prog"><i id="bar"></i></div>
+<main class="deck">
+
+<section class="slide on">
+  <div class="tag">// slide 01 · /home/ravi</div>
+  <div class="term"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp; ravi@dublin: ~</div>
+  <div class="body"><div class="cmd">whoami</div>
+  <div><h1>🐧 Ravi Kumar Sharma</h1></div>
+  <div class="cmd">cat role.txt</div>
+  <div class="g">Staff Firmware &amp; Device Driver Engineer</div>
+  <div class="cmd">uname -a</div>
+  <div>25+ yrs · Zephyr · Linux kernel · RISC-V · Wi-Fi · Ethernet</div>
+  <div class="cmd">echo $LOCATION</div>
+  <div>Dublin, Ireland · Stamp 4 (no sponsor required) <span class="cur"></span></div></div></div>
+  <p class="sub">Press → or swipe to continue.</p>
+</section>
+
+<section class="slide">
+  <div class="tag">// slide 02 · impact --summary</div>
+  <h2>Impact at a glance</h2>
+  <div class="grid">
+    <div class="card"><div class="big">25+</div><p>years in embedded software, from SDH firmware to RISC-V SoCs</p></div>
+    <div class="card"><div class="big">1st</div><p>200G/100G Ethernet MAC driver at ADI, 0 open defects at sign-off</p></div>
+    <div class="card"><div class="big">32x</div><p>SSD test throughput at Micron (1 → 32 SSDs in parallel)</p></div>
+    <div class="card"><div class="big">~90%</div><p>fewer WLAN driver crashes at Qualcomm (~8/week → under 1)</p></div>
+  </div>
+  <p class="sub">Hands-on depth in bring-up, drivers and stability, plus prior engineering-management experience at Micron and Cambium.</p>
+</section>
+
+<section class="slide">
+  <div class="tag">// slide 03 · cat skills.txt</div>
+  <h2>Core technical skills</h2>
+  <div class="term"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp; skills.txt</div><div class="body" style="font-family:var(--sans)">
+    <p class="sk"><span class="tag">languages</span><span class="chips"><span class="chip">C</span><span class="chip">C++</span><span class="chip">Python</span><span class="chip">Rust (personal)</span></span></p>
+    <p class="sk"><span class="tag">os &amp; platforms</span><span class="chips"><span class="chip">Zephyr RTOS</span><span class="chip">Embedded Linux</span><span class="chip">Linux kernel</span><span class="chip">Android</span><span class="chip">Yocto</span><span class="chip">RISC-V (Andes N25F)</span><span class="chip">ARM</span><span class="chip">Xilinx Zynq</span></span></p>
+    <p class="sk"><span class="tag">drivers &amp; connectivity</span><span class="chips"><span class="chip">Ethernet MAC 200G/100G/50G</span><span class="chip">Wi-Fi 802.11</span><span class="chip">mac80211/cfg80211</span><span class="chip">UART</span><span class="chip">SDIO</span><span class="chip">DMA</span><span class="chip">BSP</span><span class="chip">devicetree</span><span class="chip">LLDP</span><span class="chip">TCP/IP</span></span></p>
+    <p class="sk"><span class="tag">debug &amp; performance</span><span class="chips"><span class="chip">LTTng</span><span class="chip">KASAN</span><span class="chip">UBSAN</span><span class="chip">iperf</span><span class="chip">GDB</span><span class="chip">JTAG</span><span class="chip">linker scripts</span><span class="chip">Git</span><span class="chip">CMake/Make</span><span class="chip">CI/CD</span></span></p>
+  </div></div>
+</section>
+
+<section class="slide">
+  <div class="tag">// slide 04 · git log --author=ravi · analog devices</div>
+  <h2>Analog Devices · Zephyr on RISC-V</h2>
+  <p class="sub">Staff Engineer, 2021 – present · AD9311 (Atlas/Athena) beamformer platform</p>
+  <ul class="l">
+    <li>Architected the Zephyr platform on a 4-core <span class="k">Andes N25F</span> SoC, ADI's first RISC-V adoption.</li>
+    <li>Brought up the Athena board and SoC without SoC-team support: first boot in a week.</li>
+    <li>Delivered the tri-MAC <span class="k">200G/100G/50G</span> Ethernet driver; validated on Palladium and Virtual Platform.</li>
+    <li>Wrote a UART driver (FIFO, Tx DMA) from a decade-old register spec; ZTest in progress.</li>
+    <li>Solved device-profile loading with a linker-script-carved static RAM region, and adapted Zephyr to an external, adaptive clock.</li>
+    <li>Cut Apollo platform boot time from ~10 s to a few milliseconds.</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <div class="tag">// slide 05 · career --timeline</div>
+  <h2>Career timeline</h2>
+  <div class="term"><div class="body" style="font-family:var(--sans);padding-top:6px;padding-bottom:6px">
+    <div class="row"><div class="yr">2021 – now</div><div><b>Analog Devices · Staff Engineer</b><span>Zephyr / RISC-V platform, 200G Ethernet MAC driver</span></div></div>
+    <div class="row"><div class="yr">2019 – 2021</div><div><b>Micron · Senior Manager</b><span>First Linux-based microSD platform (32 boards in parallel); SSD platform 1 → 32 SSDs</span></div></div>
+    <div class="row"><div class="yr">2018 – 2019</div><div><b>Cambium Networks · Technical Manager</b><span>LLDP support; root-caused a long-pending customer throughput issue</span></div></div>
+    <div class="row"><div class="yr">2013 – 2018</div><div><b>Qualcomm · Senior Staff Engineer</b><span>Prima / Rome / iHelium WLAN drivers; ~90% fewer crashes; led 6 engineers</span></div></div>
+    <div class="row"><div class="yr">2006 – 2013</div><div><b>ST / ST-Ericsson · Software Architect</b><span>Wi-Fi SoC RTOS stack, ST's first Wi-Fi product; $10M design win; led 4</span></div></div>
+    <div class="row"><div class="yr">2000 – 2006</div><div><b>Siemens · Tellabs</b><span>Mobile platform software; SDH firmware with a zero-defect first release</span></div></div>
+  </div></div>
+</section>
+
+<section class="slide">
+  <div class="tag">// slide 06 · ls ~/projects ~/awards</div>
+  <h2>Projects &amp; recognition</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">~/pcaplyzer</span><p>Ethernet packet analytics tool; ICMP supported so far.</p></div>
+    <div class="card"><span class="tag">~/okapi</span><p>RISC-V OS targeting Andes N25F.</p></div>
+    <div class="card"><span class="tag">awards</span><p>Qualcomm patent holder and Qualstar award; Micron and ST recognition.</p></div>
+  </div>
+  <ul class="l">
+    <li>Strong working knowledge of Linux kernel and Zephyr conventions; employer policy kept contributions inside the organisation.</li>
+    <li>B.Tech, Computer Science &amp; Engineering · NIT Jalandhar.</li>
+  </ul>
+</section>
+
+<section class="slide">
+  <div class="tag">// slide 07 · ./contact.sh</div>
+  <h2>Let's talk</h2>
+  <div class="term"><div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp; contact.sh</div>
+  <div class="body">
+    <div class="cmd">location</div><div>Dublin, Ireland · Stamp 4, no sponsorship needed</div>
+    <div class="cmd">mail</div><div class="g">sharmaravi.ie@gmail.com</div>
+    <div class="cmd">tel</div><div>+353 894 873 720</div>
+    <div class="cmd">links</div><div><a href="https://linkedin.com/in/sharmaravik">linkedin.com/in/sharmaravik</a> · <a href="https://github.com/rsh64bit/">github.com/rsh64bit</a> <span class="cur"></span></div>
+  </div></div>
+</section>
+
+</main>
+<nav>
+  <span class="brand">🐧 ravi@dublin:~$</span>
+  <button id="prev" aria-label="Previous slide">← prev</button>
+  <span id="cnt">1 / 7</span>
+  <button id="next" aria-label="Next slide">next →</button>
+</nav>
+<script>
+(function(){
+  var s=[].slice.call(document.querySelectorAll('.slide')),i=0,bar=document.getElementById('bar'),cnt=document.getElementById('cnt');
+  function go(n){
+    i=Math.max(0,Math.min(s.length-1,n));
+    s.forEach(function(e,k){e.classList.toggle('on',k===i)});
+    s[i].scrollTop=0;
+    bar.style.width=((i+1)/s.length*100)+'%';
+    cnt.textContent=(i+1)+' / '+s.length;
+  }
+  document.getElementById('next').onclick=function(){go(i+1)};
+  document.getElementById('prev').onclick=function(){go(i-1)};
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(i+1)}
+    else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(i-1)}
+    else if(e.key==='Home')go(0);else if(e.key==='End')go(s.length-1);
+  });
+  var x0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;
+    if(Math.abs(dx)>60)go(dx<0?i+1:i-1);
+  },{passive:true});
+  go(0);
+})();
+</script>
+</body>
+</html>
